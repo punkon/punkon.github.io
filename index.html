@@ -372,17 +372,13 @@
       });
       document.getElementsByTagName('head')[0].insertAdjacentHTML('beforeend', tmpl);
     }
-    function seo(title, description, descriptionn,id,up,dur,url,vi,bse) {
-      var tmpl = '<title>{{title}}</title><meta name="description" content="{{description}}"/><meta content="{{url}}" property="og:url"/><meta content="{{title}}" property="og:title"/><meta content="https://ytimg.googleusercontent.com/vi/{{id}}/maxresdefault.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://ytimg.googleusercontent.com/vi/{{id}}/maxresdefault.jpg" name="twitter:image:src"/>';
+    function seo(title, description,id,url,bse) {
+      var tmpl = '<title>{{title}}</title><meta name="description" content="{{description}}"/><meta content="{{bse}}" property="og:site_name"/><meta content="{{title}}" property="og:title"/><meta content="{{url}}" property="og:url"/><meta content="{{title}}" property="og:title"/><meta content="https://ytimg.googleusercontent.com/vi/{{id}}/maxresdefault.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://ytimg.googleusercontent.com/vi/{{id}}/maxresdefault.jpg" name="twitter:image"/>';
       tmpl = Sqrl.Render(tmpl, {
           title: title,
           description: description,
-          descriptionn: descriptionn,
           id: id,
-          up: up,
-          dur: dur,
           url:url,
-          vi:vi,
           bse:bse
       });
       document.getElementsByTagName('head')[0].insertAdjacentHTML('beforeend', tmpl);
@@ -440,7 +436,7 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     var json = JSON.parse(xhr.responseText);
-                    seo(json['video']['items'][0]['snippet']['title'], json['video']['items'][0]['snippet']['description'].substring(0, 160), nl2nn(json['video']['items'][0]['snippet']['description']), json['video']['items'][0]['id'], json['video']['items'][0]['snippet']['publishedAt'], json['video']['items'][0]['contentDetails']['duration'],con_url, json['video']['items'][0]['statistics']['viewCount'],hcurl);
+		    seo(json['video']['items'][0]['snippet']['title'], json['video']['items'][0]['snippet']['description'].substring(0, 160), json['video']['items'][0]['id'],con_url,blogt);
                     var tmpl = document.getElementById('conx');
                     var rendered_tmpl = document.createElement('div');
                     rendered_tmpl.className = 'row';
