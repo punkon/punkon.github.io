@@ -308,6 +308,9 @@
     function nl2nn(str) {
         return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '<br />');
     }
+    var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+    });
     function show_hide_desc() {
         document.getElementById("video-description").classList.toggle("hide-sm");
         document.getElementById("video-description").classList.toggle("hide-xs");
@@ -520,7 +523,7 @@
                         channel: json['video']['items'][0]['snippet']['channelTitle'],
                         videos: json['related']['items'],
                         lazy_class: "lazy",
-						dhcurl: hcurl,
+			dhcurl: hcurl,
                         lid:video_id,
                         hcprefix:hcprefix
                     });
@@ -573,22 +576,11 @@
     }
 </script>
 <script>
-    var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".lazy"
-    });
     function show_burger() {
         document.getElementById("burger-menu").classList.toggle("hide-xs");
         document.getElementById("burger-open").classList.toggle("is-hidden");
         document.getElementById("burger-close").classList.toggle("is-hidden");
     };
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173946040-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-173946040-1');
 </script>
 <script type="text/javascript">
         if(!Histats_variables){var Histats_variables=[];}
